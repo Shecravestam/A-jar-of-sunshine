@@ -1,0 +1,585 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffd6e8">
+<title>Dear Princess 🎀</title>
+<style>
+:root {
+  --pink: #ffd6e8;
+  --pink-dark: #d95798;
+  --pink-deep: #a94379;
+  --blue: #c9e8ff;
+  --blue-dark: #477fae;
+  --paper: #fffafd;
+  --ink: #70485f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  padding: 20px 12px 45px;
+  color: var(--ink);
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 12% 15%, white 0 4px, transparent 5px),
+    radial-gradient(circle at 87% 35%, #c9e8ff 0 5px, transparent 6px),
+    linear-gradient(145deg, #ffe5ef, #fff5fa 55%, #dff1ff);
+  background-size: 75px 75px, 95px 95px, auto;
+}
+button { font: inherit; cursor: pointer; }
+button:focus-visible { outline: 3px solid var(--blue-dark); outline-offset: 3px; }
+.page { max-width: 720px; margin: auto; }
+.topline {
+  text-align: center;
+  color: var(--pink-deep);
+  letter-spacing: 2px;
+  font-size: .75rem;
+  font-weight: bold;
+  margin: 8px 0 18px;
+}
+.card {
+  position: relative;
+  background: var(--paper);
+  border: 2px solid #f4c3da;
+  border-radius: 22px 14px 24px 15px;
+  padding: 25px 19px;
+  margin-bottom: 23px;
+  box-shadow: 0 9px 25px #c67da72b;
+  overflow: hidden;
+}
+.tape {
+  position: absolute;
+  top: -3px;
+  left: calc(50% - 45px);
+  width: 90px;
+  height: 22px;
+  background: #bde4ffb8;
+  transform: rotate(-4deg);
+}
+.sticker { position: absolute; font-size: 1.55rem; pointer-events: none; }
+.sticker.top { top: 20px; right: 13px; transform: rotate(10deg); }
+.sticker.bottom { bottom: 12px; right: 14px; transform: rotate(-9deg); }
+.eyebrow {
+  color: var(--pink-dark);
+  text-align: center;
+  font-size: .72rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: normal; }
+h1 {
+  color: var(--pink-deep);
+  text-align: center;
+  font-size: clamp(2.25rem, 9vw, 3.5rem);
+  line-height: 1.1;
+  margin: 13px 0;
+}
+h2 { text-align: center; color: var(--pink-deep); font-size: 1.65rem; margin: 6px 0 12px; }
+p { line-height: 1.8; }
+.subtitle { text-align: center; line-height: 1.8; }
+.doodle { text-align: center; color: var(--pink-dark); margin: 15px 0; }
+
+.kitty {
+  position: relative;
+  width: 94px;
+  height: 80px;
+  margin: 12px auto 17px;
+}
+.face {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 74px;
+  height: 59px;
+  background: white;
+  border: 2px solid #e8c6d7;
+  border-radius: 47% 47% 44% 44%;
+}
+.ear {
+  position: absolute;
+  top: -9px;
+  width: 27px;
+  height: 28px;
+  background: white;
+  border: 2px solid #e8c6d7;
+  z-index: 0;
+}
+.ear.left { left: 0; transform: rotate(-28deg); border-radius: 5px 17px 3px 4px; }
+.ear.right { right: 0; transform: rotate(28deg); border-radius: 17px 5px 4px 3px; }
+.eye {
+  position: absolute;
+  top: 29px;
+  width: 5px;
+  height: 7px;
+  border-radius: 50%;
+  background: #55424c;
+}
+.eye.left { left: 16px; }
+.eye.right { right: 16px; }
+.nose {
+  position: absolute;
+  top: 37px;
+  left: 32px;
+  width: 8px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f1c650;
+}
+.whisker {
+  position: absolute;
+  top: 34px;
+  color: #a18a98;
+  font-size: 12px;
+  letter-spacing: -3px;
+}
+.whisker.left { left: -12px; }
+.whisker.right { right: -10px; }
+.bow {
+  position: absolute;
+  z-index: 2;
+  top: 1px;
+  right: 0;
+  width: 32px;
+  height: 24px;
+  transform: rotate(10deg);
+}
+.bow::before, .bow::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  width: 17px;
+  height: 17px;
+  background: #f080b3;
+  border: 1px solid #cf4e8d;
+}
+.bow::before { left: 0; border-radius: 80% 30% 65% 35%; transform: rotate(-20deg); }
+.bow::after { right: 0; border-radius: 30% 80% 35% 65%; transform: rotate(20deg); }
+.bow span {
+  position: absolute;
+  z-index: 3;
+  left: 12px;
+  top: 8px;
+  width: 7px;
+  height: 8px;
+  background: #d95798;
+  border-radius: 50%;
+}
+.letter {
+  background: #fff0f7;
+  border: 2px dashed #efb6d2;
+  border-radius: 15px;
+  padding: 17px;
+  margin-top: 22px;
+  line-height: 1.8;
+}
+.letter p { margin: 7px 0 14px; }
+.signature { text-align: right; color: var(--pink-deep); font-family: Georgia, serif; }
+.section { border-top: 2px dashed #d5eaff; margin-top: 24px; padding-top: 22px; }
+.hint { text-align: center; font-size: .92rem; line-height: 1.7; }
+.main-button {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 18px;
+  color: white;
+  background: var(--pink-dark);
+  box-shadow: 0 4px 0 #bd4f88;
+  margin: 13px auto 4px;
+  transition: transform .15s;
+}
+.main-button.blue { background: var(--blue-dark); box-shadow: 0 4px 0 #32668f; }
+.main-button:active { transform: translateY(3px); box-shadow: none; }
+.jar-wrap { text-align: center; margin: 20px auto 12px; }
+.jar {
+  position: relative;
+  width: 154px;
+  height: 178px;
+  margin: 0 auto;
+  border: 3px solid #b7dff8;
+  border-radius: 25px 25px 35px 35px;
+  background: linear-gradient(110deg, #e9f7ffb8, #ffffffa8, #d6edffb8);
+  box-shadow: inset 8px 0 13px #ffffffaa, 0 6px 0 #c2e2f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+.jar::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 26px;
+  width: 96px;
+  height: 20px;
+  border: 3px solid #e879ad;
+  border-radius: 7px;
+  background: #ffd4e8;
+}
+.jar::after {
+  content: "♡";
+  position: absolute;
+  top: 45px;
+  left: 0;
+  right: 0;
+  font-size: 2.6rem;
+  color: #e879ad;
+  opacity: .7;
+}
+.jar-bow { position: absolute; top: -31px; right: 7px; font-size: 2.2rem; z-index: 2; }
+.jar-label {
+  position: relative;
+  z-index: 2;
+  width: 104px;
+  padding: 9px 4px;
+  background: #fff0f7;
+  border: 1px dashed #e8a7c9;
+  border-radius: 7px;
+  font-family: Georgia, serif;
+  color: #a94379;
+  font-size: .92rem;
+  transform: rotate(-3deg);
+}
+.jar-label span { display: block; font-size: 1.15rem; }
+.jar-note {
+  display: none;
+  background: #fff0f7;
+  border: 2px dashed #e9b4d0;
+  border-radius: 14px;
+  padding: 19px;
+  margin-top: 17px;
+  text-align: center;
+  line-height: 1.8;
+}
+.jar-note.show { display: block; animation: pop .3s ease-out; }
+.jar-note .note-count { color: var(--pink-dark); font-size: .75rem; letter-spacing: 1px; font-weight: bold; }
+@keyframes pop {
+  from { opacity: 0; transform: scale(.94) translateY(5px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.reason-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+.reason {
+  border: 1px solid #f0c5db;
+  border-radius: 12px;
+  background: #fff0f7;
+  color: #a34e7b;
+  padding: 14px 9px;
+  min-height: 92px;
+  line-height: 1.5;
+  box-shadow: 2px 3px 0 #f7dce9;
+}
+.reason:nth-child(2n) {
+  background: #eaf6ff;
+  border-color: #c1e2fb;
+  color: #477fae;
+  box-shadow: 2px 3px 0 #d5eaff;
+}
+.reason span { display: block; font-size: 1.4rem; margin-bottom: 5px; }
+.reason-detail, .reassurance {
+  display: none;
+  background: #eef7ff;
+  border: 1px dashed #a9d7f7;
+  border-radius: 13px;
+  padding: 16px;
+  text-align: center;
+  line-height: 1.8;
+  margin-top: 14px;
+}
+.reason-detail.show, .reassurance.show { display: block; animation: pop .25s ease-out; }
+.reassurance {
+  background: #fff0f7;
+  border-color: #e9b4d0;
+  font-family: Georgia, serif;
+  font-size: 1.12rem;
+}
+.date-answer {
+  display: none;
+  background: #eaf6ff;
+  border: 1px dashed #a9d7f7;
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+.date-answer.show { display: block; animation: pop .3s ease-out; }
+.answer-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 17px; }
+.answer-buttons button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 9px;
+  background: #ed83b3;
+  color: white;
+  box-shadow: 0 4px 0 #c55e92;
+}
+.answer-buttons button:last-child { background: #74b6e8; box-shadow: 0 4px 0 #4b8fbe; }
+.answer-buttons button:active { transform: translateY(3px); box-shadow: none; }
+.footer { text-align: center; line-height: 1.8; color: #9b6489; padding: 10px 0 0; font-size: .85rem; }
+.small { font-size: .75rem; }
+@media(max-width:420px) {
+  body { padding: 17px 9px 30px; }
+  .card { padding: 23px 14px; }
+  .letter { padding: 14px; }
+  .reason { font-size: .88rem; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="topline">🎀 A LITTLE CORNER FOR MY PRINCESS 🎀</div>
+
+  <section class="card">
+    <div class="tape"></div>
+    <span class="sticker top">🩵</span>
+    <div class="kitty" aria-label="Cute cat decoration">
+      <div class="face">
+        <span class="ear left"></span><span class="ear right"></span>
+        <span class="eye left"></span><span class="eye right"></span>
+        <span class="nose"></span>
+        <span class="whisker left">≋</span><span class="whisker right">≋</span>
+      </div>
+      <div class="bow"><span></span></div>
+    </div>
+    <div class="eyebrow">A LETTER FROM YOUR GIRL</div>
+    <h1>Dear Princess ♡</h1>
+    <p class="subtitle">A little letter, a jar full of notes, and one very important question… 💌</p>
+    <div class="doodle">♡ ── 🎀 ── 🩵 ── ♡</div>
+
+    <div class="letter">
+      <p><strong>Dear Princess,</strong></p>
+      <p>I don't think you fully realize how much you've slowly become such an important part of my life. Somewhere between all the conversations, the laughs, the little moments, and even the quiet ones, my feelings for you grew into something real and deep. You've brought a kind of happiness and comfort into my life that I wasn't expecting, and being able to talk to you, care about you, and learn you has honestly become one of my favorite things.</p>
+      <p>You make my days feel lighter, my mind calmer, and my heart softer in the best way possible. What I love most is that with you, nothing feels forced. I can be myself around you, and every time I picture the person I want beside me, it keeps leading me back to you.</p>
+      <p>I want to be the one who checks on you after long days, celebrates your wins, stands beside you through hard moments, and reminds you how valued and cared for you are. I want to build something genuine with you—something full of trust, affection, consistency, and love.</p>
+      <p>So instead of keeping these feelings to myself, I just want to be honest with you and ask you something…</p>
+      <p class="signature">With a little blush and a lot of affection, 🎀<br>Your girl</p>
+    </div>
+
+    <div class="section">
+      <h2>One little question… 🥹</h2>
+      <p class="subtitle">Princess, would you go on a second date with me? 💗</p>
+      <p class="hint">Pick your answer, pretty girl. And don't leave your girl over here being nervous by herself. 😭💕</p>
+      <div class="answer-buttons">
+        <button id="yesButton">YESSS 💗</button>
+        <button id="thinkButton">Tell me more 👀</button>
+      </div>
+      <div class="date-answer" id="date-answer" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="tape"></div>
+    <span class="sticker top">💗</span>
+    <div class="eyebrow">PICK A LITTLE PAPER NOTE</div>
+    <h2>🎀 A Jar Full of You 🎀</h2>
+    <p class="hint">Every little note is something I want you to hear from me. Tap the jar to pull a note, or use the button to get another one. 🩷</p>
+
+    <div class="jar-wrap">
+      <button class="jar" id="jar" aria-label="Pick a note from the jar">
+        <span class="jar-bow">🎀</span>
+        <span class="jar-label"><span>♡</span>Little notes<br>for Princess</span>
+      </button>
+    </div>
+    <button class="main-button" id="drawNote">Pick a note for me 💌</button>
+    <div class="jar-note" id="jar-note" aria-live="polite">
+      <div class="note-count" id="note-count">A LITTLE NOTE FOR YOU</div>
+      <p id="note-text"></p>
+      <button class="main-button blue" id="anotherNote">Another one, please 🎀</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="tape"></div>
+    <span class="sticker top">🩵</span>
+    <div class="eyebrow">LITTLE THINGS I ADORE</div>
+    <h2>Reasons I Like You 💗</h2>
+    <p class="hint">Tap a little card to read one of the things about you that has my heart smiling.</p>
+
+    <div class="reason-grid" id="reason-grid"></div>
+    <div class="reason-detail" id="reason-detail" aria-live="polite"></div>
+  </section>
+
+  <section class="card">
+    <div class="tape"></div>
+    <span class="sticker top">🎀</span>
+    <div class="eyebrow">OPEN WHEN YOU NEED A LITTLE LOVE</div>
+    <h2>Your Reassurance Corner 🫶</h2>
+    <p class="hint">Tap the button whenever you want a reminder that you're appreciated, cared for, and never expected to be perfect.</p>
+    <button class="main-button" id="reassure">Remind me, please 🩷</button>
+    <div class="reassurance" id="reassurance" aria-live="polite"></div>
+    <p class="hint small">And yes, Princess, you can tap it as many times as you want. ♡</p>
+  </section>
+
+  <footer class="footer">
+    Made with love, pink bows, baby-blue hearts, and you in mind. 🎀🩵
+    <br><span class="small">A little reminder that you're special to me, Princess. ♡</span>
+  </footer>
+</main>
+
+<script>
+const loveNotes = [
+  "No matter what life throws your way, I need you to know you'll never have to face it alone while I'm here. I want to be the person you can lean on during the hard days and laugh with during the good ones. Through every stressful moment, every doubt, and every victory, I promise to stand beside you, support you, and remind you how loved and cared for you are.",
+  "I swear your smile has a way of completely distracting me every single time you smile. It's like the world pauses for a second and suddenly nothing else matters except that look on your face. I don't even think you realize how beautiful you are when it shows up. It's honestly one of my favorite things about you.",
+  "I don't just like talking to you. I like understanding you, learning you, hearing about your day, your thoughts, your little frustrations, and your dreams. I like all the parts of you, even the ones you think people overlook.",
+  "You cross my mind more times a day than I could ever admit without sounding crazy. The smallest things remind me of you, and honestly, I don't even mind it. You've become my favorite thought.",
+  "I hope you never question how special you are to me. Your smile, your energy, your heart—everything about you leaves a mark on me. Being close to you feels like peace I didn't know I needed.",
+  "Every time I talk to you, my day gets a little softer. You have this way of making everything feel lighter without even trying. I don't know how you did it, but somehow you became the part of my day I look forward to the most.",
+  "You're safe with me. I want us to be able to talk honestly, ask questions, and understand each other, even when a conversation isn't easy.",
+  "I've got you, baby. I can't promise life will always be easy, but I can promise to keep trying, to listen, and to show up with care.",
+  "You're not alone in this. I'm right here, and you don't have to pretend everything is okay just to make me comfortable.",
+  "Whatever you're carrying, we can talk about it together. You don't have to have all the answers before you come to me.",
+  "You don't have to be perfect for me. Just be you. The real you is the person I'm getting to know and care about.",
+  "I want my actions to match my words. If I say I'll do something, I want to make an honest effort to follow through.",
+  "You're enough exactly as you are. You don't have to earn kindness or affection by doing everything right.",
+  "I see you, and I appreciate the little things that make you who you are.",
+  "You can rest with me. We can have quiet moments too; we don't have to make every conversation extraordinary.",
+  "I'm proud of you, even on the hard days. One difficult day doesn't erase all the effort you've made.",
+  "It's okay to not be okay. You can tell me how you're really feeling, and I'll do my best to listen without judging you.",
+  "You're not too much for having feelings. We can keep learning how to understand each other and communicate better.",
+  "I believe in you, even when you're having trouble believing in yourself. I hope you remember to give yourself some credit.",
+  "The world is better because you're in it. I'm glad our paths crossed and that I get to know you.",
+  "You light up rooms without even trying. There's something special about the way you bring your own energy wherever you go.",
+  "I genuinely like you—the real you, the soft you, the silly you, the messy you. You don't have to perform for me.",
+  "I choose you on purpose, and I want to keep showing you that through the way I treat you.",
+  "You're worth every mile between us. I wish I could make the distance disappear sometimes, but until then, I want us to keep making time for each other.",
+  "I carry thoughts of you into the most random parts of my day. Sometimes one little thing reminds me of you and there I go smiling again.",
+  "Even on the quiet days, I still want us to feel connected. We can have our own things going on and still make room for each other.",
+  "The distance is just geography. It doesn't stop me from caring about you, learning you, and looking forward to the time we share.",
+  "I look forward to the day when seeing you doesn't require planning around miles and screens. Until then, I'm glad we get to make these little memories.",
+  "I love the way you make me laugh without even trying.",
+  "I love how I can be myself around you.",
+  "I love your heart and the way you care so deeply.",
+  "I love how your voice can calm me down on hard days.",
+  "I love how beautiful you are naturally, inside and out.",
+  "I love the little things you do that you probably don't even notice.",
+  "I love how talking to you never feels forced or boring.",
+  "I love the way you stay on my mind throughout the day.",
+  "I love how strong you are, even when things get hard.",
+  "I love the way you make me want to be better.",
+  "I love how safe my heart feels with you.",
+  "I love your laugh and how contagious it is.",
+  "I love the way you look at me sometimes.",
+  "I love that even after long days, you're still the person I want to talk to most."
+];
+
+const reasons = [
+  ["😂", "Your laugh", "I love the way you make me laugh without even trying. You can turn a regular moment into one I want to remember."],
+  ["🩷", "Being myself", "I love how I can be myself around you. I don't feel like I have to turn into somebody else to be worth your time."],
+  ["🌷", "Your heart", "I love your heart and the way you care so deeply. The way you care says so much about who you are."],
+  ["🎧", "Your voice", "I love how your voice can calm me down on hard days. Sometimes just hearing you makes a difference."],
+  ["🎀", "Your beauty", "I love how beautiful you are naturally, inside and out. And yes, pretty girl, I notice. A LOT."],
+  ["🫶", "Little things", "I love the little things you do that you probably don't even notice. Sometimes those little things are the ones that stick with me."],
+  ["💬", "Our talks", "I love how talking to you never feels forced or boring. There's always another thing I want to know about you."],
+  ["💭", "On my mind", "I love the way you stay on my mind throughout the day. You have a habit of showing up in my thoughts when I least expect it."],
+  ["🌻", "Your strength", "I love how strong you are, even when things get hard. I hope you know you deserve support, too."],
+  ["✨", "You inspire me", "I love the way you make me want to be better. Not because you ask me to change who I am, but because you inspire me to grow."],
+  ["🤍", "Feeling safe", "I love how safe my heart feels with you. I want us to keep building that feeling with honesty, patience, and consistency."],
+  ["🥹", "Your laugh", "I love your laugh and how contagious it is. Sometimes I find myself smiling just because you're laughing."],
+  ["👀", "Your little looks", "I love the way you look at me sometimes. You might not even realize I notice, but I do."],
+  ["📱", "My favorite person to talk to", "I love that even after long days, you're still the person I want to talk to most."]
+];
+
+const reassuranceNotes = [
+  "You're safe with me. Always.",
+  "I've got you, no matter what.",
+  "You're not alone in this. I'm right here.",
+  "Whatever you're carrying, we can carry it together.",
+  "You don't have to be perfect for me. Just be you.",
+  "I'm not going anywhere just because a day gets hard. Let's keep communicating and working through things together.",
+  "You're enough exactly as you are.",
+  "I see you, and I love what I see.",
+  "You can rest with me.",
+  "I'm proud of you, even on the hard days.",
+  "It's okay to not be okay. I'm still here.",
+  "You're not too much. Your feelings deserve care and understanding.",
+  "You're my favorite place to be.",
+  "You're the calm in my chaos.",
+  "I believe in you, even when you don't.",
+  "The world is better because you're in it.",
+  "You light up rooms without even trying.",
+  "I choose you on purpose, and I want my actions to show it.",
+  "You are the person I want to keep building something meaningful with.",
+  "I genuinely like you—the real you, the soft you, the messy you. All of it.",
+  "You're the one I'm choosing to get to know more deeply, one day at a time.",
+  "You're worth every mile between us.",
+  "I carry you with me in little thoughts throughout the day.",
+  "Even on the quiet days, I still want us to make room for each other.",
+  "The distance is just geography. I still care about you, even when we're apart.",
+  "I fall asleep thinking about the day we can spend time together without a screen between us."
+];
+
+let lastNote = -1;
+let reassuranceLast = -1;
+let reasonLast = -1;
+
+function randomIndex(list, previous) {
+  if (list.length === 1) return 0;
+  let next;
+  do { next = Math.floor(Math.random() * list.length); }
+  while (next === previous);
+  return next;
+}
+
+function drawLoveNote() {
+  lastNote = randomIndex(loveNotes, lastNote);
+  document.getElementById("note-count").textContent =
+    "LOVE NOTE " + (lastNote + 1) + " OF " + loveNotes.length;
+  document.getElementById("note-text").textContent = loveNotes[lastNote];
+  document.getElementById("jar-note").classList.add("show");
+}
+document.getElementById("jar").addEventListener("click", drawLoveNote);
+document.getElementById("drawNote").addEventListener("click", drawLoveNote);
+document.getElementById("anotherNote").addEventListener("click", drawLoveNote);
+
+const reasonGrid = document.getElementById("reason-grid");
+const reasonDetail = document.getElementById("reason-detail");
+
+reasons.forEach((reason, index) => {
+  const button = document.createElement("button");
+  button.className = "reason";
+  button.innerHTML = `<span>${reason[0]}</span>${reason[1]}`;
+  button.addEventListener("click", () => {
+    reasonLast = index;
+    reasonDetail.innerHTML = `<strong>${reason[0]} ${reason[1]}</strong><p>${reason[2]}</p>`;
+    reasonDetail.classList.add("show");
+  });
+  reasonGrid.appendChild(button);
+});
+
+document.getElementById("reassure").addEventListener("click", () => {
+  reassuranceLast = randomIndex(reassuranceNotes, reassuranceLast);
+  const box = document.getElementById("reassurance");
+  box.textContent = reassuranceNotes[reassuranceLast];
+  box.classList.add("show");
+});
+
+const dateAnswer = document.getElementById("date-answer");
+document.getElementById("yesButton").addEventListener("click", () => {
+  dateAnswer.innerHTML =
+    "<strong>WAITTT, REALLY?! 🥹💗🎀</strong>" +
+    "<p>Okayyy, Princess, you just made your girl smile so hard. 😭💕 " +
+    "It's a date! I'll plan something special for us. The details are still a surprise, so you'll have to be a little patient with me. 🤭</p>" +
+    "<p>Thank you for saying yes to another memory with me. ♡</p>";
+  dateAnswer.classList.add("show");
+});
+document.getElementById("thinkButton").addEventListener("click", () => {
+  dateAnswer.innerHTML =
+    "<strong>OHHH, you need more convincing? 👀😂</strong>" +
+    "<p>Well, ma'am, I would like to spend some more time with you, make you smile, flirt with you a little, and create another cute memory for us. 🩷</p>" +
+    "<p>No pressure, pretty girl. Take your time, and tell me what you're thinking. ♡</p>";
+  dateAnswer.classList.add("show");
+});
+</script>
+</body>
+</html>
